@@ -36,6 +36,7 @@ html,body{
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
+    overflow: hidden;
 }
 .upper-container {
     display: flex;
@@ -100,7 +101,7 @@ html,body{
     align-items: center;
     justify-content: center;
     /* 设置超出部分隐藏，方便改变图标颜色 */
-    overflow: hidden;
+    
     /* top: 160px; */
     position: relative;
 }
@@ -380,24 +381,25 @@ html,body{
 }
 .close-list2 {
     display: none;
-    position: fixed;
-    height: 77%;
+    position:fixed;
+    height: 20%;
     right: 0;
     top: 0;
     width: 30%;
     z-index: 2;
+    
 }
 .music-list {
     right: 0;
-    background-color: rgb(237 231 231 / 80%);
-    width: 25%;
+    background-color: rgba(237, 237, 237, 0.8);
+    width: 30%;
     position: absolute;
-    height: 200px;
-    bottom: 0;
+    bottom: 65%;
+    height:370%;
     display: none;
-    position: fixed;
-    overflow: hidden;
+    border-radius: 10px;
     z-index: 2;
+    box-shadow:0 25px 40px rgba(0, 0, 0, 0.3); 
     
 }
 
@@ -435,7 +437,7 @@ img{
     cursor: pointer;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 .all-list div:hover {
@@ -466,12 +468,12 @@ img{
 
 @keyframes hideAni {
     from {
-        transform: translateY(0%);
+        transform: translateX(0%);
         
     }
 
     to {
-        transform: translateY(100%);
+        transform: translateX(100%);
         
         display: none;
     }
@@ -479,12 +481,12 @@ img{
 
 @keyframes showAni {
     from {
-        transform: translateY(100%);
+        transform: translateX(100%);
         
     }
 
     to {
-        transform: translateY(0%);
+        transform: translateX(0%);
        
     }
 }
