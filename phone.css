@@ -377,7 +377,7 @@ html,body{
 .close-list {
     display: none;
     position: fixed;
-    height: 60%;
+    height: 50%;
     left: 0;
     top: 0;
     width: 100%;
@@ -396,10 +396,10 @@ html,body{
     display: none;
     position: fixed;
     overflow: hidden;
-    height: 40%;
+    height: 50%;
     bottom: 0;
-    background-color: white;
-    z-index: 2;
+    background-color: rgb(37, 37, 37);
+    z-index: 11;
     right: 0;
     
     width: 100%;
@@ -411,7 +411,7 @@ html,body{
 
 .music-list-title {
     text-align: center;
-    color: black;
+    color: rgb(185, 185, 185);
     font-size: 20px;
     font-weight: 600;
     padding: 5% 15% 5% 15%;
@@ -423,28 +423,33 @@ html,body{
     height: 1px;
     width: 90%;
     border: none;
-    border-top: 2px solid black;
+    border-top: 2px solid rgb(185, 185, 185);
     margin: auto;
 }
 .all-list{
-    background-color: whitesmoke;
+    background-color: rgb(41, 41, 41);
     width: 90%;
     margin: auto;
 }
+img{
+    width: 20%;
+    height: 20%;
+}
 .all-list div {
-    
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
     height: 100%;
     line-height: 50px;
-    color: black;
+    color: rgb(185, 185, 185);
     font-weight: 400;
-    padding: 0% 15% 0% 15%;
     cursor: pointer;
     text-align: center;
     
 }
 
 .all-list div:hover {
-    background-color: whitesmoke;
+    background-color: rgb(185, 185, 185);
     cursor: pointer;
 }
 
@@ -472,25 +477,25 @@ html,body{
 @keyframes hideAni {
     from {
         transform: translateY(0%);
-        opacity: 1;
+      
     }
 
     to {
-        transform: translateY(15%);
-        opacity: 0;
+        transform: translateY(100%);
+        
         display: none;
     }
 }
 
 @keyframes showAni {
     from {
-        transform: translateY(10%);
-        opacity: 0;
+        transform: translateY(100%);
+       
     }
 
     to {
         transform: translateY(0%);
-        opacity: 1;
+        
     }
 }
 
