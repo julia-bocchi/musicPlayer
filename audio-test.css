@@ -392,7 +392,7 @@ html,body{
     background-color: rgb(237 231 231 / 80%);
     width: 25%;
     position: absolute;
-    height: 150px;
+    height: 200px;
     bottom: 0;
     display: none;
     position: fixed;
@@ -445,14 +445,14 @@ img{
 
 .list-card-show {
     animation: showAni ease-in-out;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
 }
 
 .list-card-hide {
     animation: hideAni ease-in-out;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
 }

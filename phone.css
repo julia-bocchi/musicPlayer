@@ -455,14 +455,14 @@ img{
 
 .list-card-show {
     animation: showAni ease-in-out;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
 }
 
 .list-card-hide {
     animation: hideAni ease-in-out;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
 }
