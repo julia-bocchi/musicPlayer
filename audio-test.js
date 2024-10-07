@@ -442,7 +442,9 @@ var lrc = `[00:14]多分（たぶん）、私（わたし）じゃなくてい�
 [03:56]まだ枯れない花を
 [04:00]君に添えてさ
 [04:03]ずっとずっとずっとずっと
-[04:08]抱えてよ`;
+[04:08]抱えてよ
+[04:11]
+[04:45] `;
 var lrc2 = `[00:14]大概不是我也没问题的吧
 [00:17]两人在一起已没有一丝从容
 [00:20]回过神来我们仅剩下了吵闹
@@ -489,7 +491,9 @@ var lrc2 = `[00:14]大概不是我也没问题的吧
 [03:56]将这一朵还未枯萎的花
 [04:00]伴于你左右
 [04:03]一直 一直 一直 一直
-[04:08]抱在怀中`;
+[04:08]抱在怀中
+[04:11]
+[04:45] `;
 
 // 最开始获取到的歌词列表是字符串类型（不好操作）
 let lrcArr = lrc.split("\n");
@@ -636,50 +640,80 @@ scrollableList.addEventListener('mouseleave', () => {
     scrollableList.classList.remove('show-scrollbar');
 });
 // 监听键盘按下事件
-document.addEventListener('keydown', function(event) {
-    // 使用 key 而不是 keyCode，因为 key 是现代标准
-    switch (event.key) {
-      case " ": // 空格键播放/暂停
-        if (audio.paused) {
-          audio.play();
-          //唱片动画
-          rotateRecord();
-          pause.classList.remove("icon-play");
-          pause.classList.add("icon-pause");
-        } else {
-          audio.pause();
-          rotateRecordStop();
-          pause.classList.remove("icon-pause");
-          pause.classList.add("icon-play");
-        }
-        break;
-      case "ArrowLeft": // 左箭头键后退5秒
-        if (!audio.paused) {
-          audio.currentTime -= 5;
-        }
-        break;
-      case "ArrowRight": // 右箭头键前进5秒
-        if (!audio.paused) {
-          audio.currentTime += 5;
-        }
-        break;
-      // 你可以添加更多的键和行为
+
+document.addEventListener("DOMContentLoaded", function () {
+  //音量函数
+  function updateVolumn() {
+    audio.volume = volumeTogger.value / 100;
+    console.log("音量更新: " + audio.volume); // 调试语句
+  }
+//播放函数
+  function togglePlayPause() {
+    if (audio.paused) {
+      audio.play();
+      //唱片动画
+      rotateRecord();
+      pause.classList.remove("icon-play");
+      pause.classList.add("icon-pause");
+    } else {
+      audio.pause();
+      rotateRecordStop();
+      pause.classList.remove("icon-pause");
+      pause.classList.add("icon-play");
+    }
+  }
+//快进函数
+  function skipTracks(direction) {
+    var currentTime = audio.currentTime;
+    if (direction === "left") {
+      audio.currentTime -= 5;
+    } else if (direction === "right") {
+      audio.currentTime += 5;
+    }
+  }
+
+  document.addEventListener("keydown", function (event) {
+    console.log("按键被按下: " + event.key); // 调试语句
+    if (event.altKey) {
+      if (event.key === "ArrowLeft") {
+        skipBackward.click(); // 模拟点击上一首按钮
+      } else if (event.key === "ArrowRight") {
+        skipForward.click(); // 模拟点击下一首按钮
+      }
+    } else {
+      switch (event.key) {
+        case " ": // 空格键播放/暂停
+          togglePlayPause();
+          break;
+        case "ArrowLeft": // 左箭头键后退5秒
+          if (!audio.paused) {
+            skipTracks("left");
+          }
+          break;
+        case "ArrowRight": // 右箭头键前进5秒
+          if (!audio.paused) {
+            skipTracks("right");
+          }
+          break;
+        case "ArrowUp": // 上箭头键音量加0.1
+          if (audio.volume < 1) {
+            audio.volume = Math.min(audio.volume + 0.1, 1);
+            volumeTogger.value = Math.round(audio.volume * 100);
+          }
+          event.preventDefault();
+          break;
+        case "ArrowDown": // 下箭头键音量减0.1
+          if (audio.volume > 0) {
+            audio.volume = Math.max(audio.volume - 0.1, 0);
+            volumeTogger.value = Math.round(audio.volume * 100);
+          }
+          event.preventDefault();
+          break;
+      }
     }
     event.preventDefault(); // 阻止默认行为
-});
-// 监听键盘按下事件
-document.addEventListener('keydown', function(event) {
-    // 使用 key 而不是 keyCode，因为 key 是现代标准
-    if (event.altKey && event.key === "ArrowRight") { // Alt + 右箭头键切歌
-        skipBackward.click(); // 模拟点击下一首按钮
-        event.preventDefault(); // 阻止默认行为
-    }
-});
-// 监听键盘按下事件
-document.addEventListener('keydown', function(event) {
-    // 使用 key 而不是 keyCode，因为 key 是现代标准
-    if (event.altKey && event.key === "ArrowLeft") { // Alt + 右箭头键切歌
-        skipForward.click(); // 模拟点击上一首按钮
-        event.preventDefault(); // 阻止默认行为
-    }
+  });
+
+  volumeTogger.addEventListener("input", updateVolumn);
+  audio.addEventListener("timeupdate", updateVolumn);
 });
