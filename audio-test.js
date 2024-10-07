@@ -202,16 +202,16 @@ list.addEventListener('click', function (event) {
     closeList2.addEventListener("click", closeListBoard);
     closeList.addEventListener('click', closeListBoard);
 });
-
 // 点击关闭面板关闭音乐列表
-function closeListBoard() {
-    musicList.classList.remove("list-card-show");
-    musicList.classList.add("list-card-hide");
-    closeList.style.display = "none";
-    closeList2.style.display = "none";
-   
-    // musicList.style.display = "none";
-}
+document.addEventListener("click", function (event) {
+  var target = event.target;
+  if (target !== list && target !== musicList && !musicList.contains(target)) {
+        musicList.classList.remove("list-card-show");
+        musicList.classList.add("list-card-hide");
+  }
+});
+
+
 
 // 存储当前播放的音乐序号
 var musicId = 0;
@@ -634,4 +634,52 @@ scrollableList.addEventListener('mouseleave', () => {
         clearTimeout(timeout);
     }
     scrollableList.classList.remove('show-scrollbar');
+});
+// 监听键盘按下事件
+document.addEventListener('keydown', function(event) {
+    // 使用 key 而不是 keyCode，因为 key 是现代标准
+    switch (event.key) {
+      case " ": // 空格键播放/暂停
+        if (audio.paused) {
+          audio.play();
+          //唱片动画
+          rotateRecord();
+          pause.classList.remove("icon-play");
+          pause.classList.add("icon-pause");
+        } else {
+          audio.pause();
+          rotateRecordStop();
+          pause.classList.remove("icon-pause");
+          pause.classList.add("icon-play");
+        }
+        break;
+      case "ArrowLeft": // 左箭头键后退5秒
+        if (!audio.paused) {
+          audio.currentTime -= 5;
+        }
+        break;
+      case "ArrowRight": // 右箭头键前进5秒
+        if (!audio.paused) {
+          audio.currentTime += 5;
+        }
+        break;
+      // 你可以添加更多的键和行为
+    }
+    event.preventDefault(); // 阻止默认行为
+});
+// 监听键盘按下事件
+document.addEventListener('keydown', function(event) {
+    // 使用 key 而不是 keyCode，因为 key 是现代标准
+    if (event.altKey && event.key === "ArrowRight") { // Alt + 右箭头键切歌
+        skipBackward.click(); // 模拟点击下一首按钮
+        event.preventDefault(); // 阻止默认行为
+    }
+});
+// 监听键盘按下事件
+document.addEventListener('keydown', function(event) {
+    // 使用 key 而不是 keyCode，因为 key 是现代标准
+    if (event.altKey && event.key === "ArrowLeft") { // Alt + 右箭头键切歌
+        skipForward.click(); // 模拟点击上一首按钮
+        event.preventDefault(); // 阻止默认行为
+    }
 });
