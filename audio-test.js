@@ -344,7 +344,7 @@ function rotateRecordStop() {
 // 滑块调节音量
 audio.addEventListener('timeupdate', updateVolumn);
 function updateVolumn() {
-    audio.volume = volumeTogger.value / 70;
+    audio.volume = volumeTogger.value / 100;
 }
 
 // 点击音量调节设置静音
