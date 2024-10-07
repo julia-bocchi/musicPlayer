@@ -395,7 +395,7 @@ html,body{
 .music-list {
     display: none;
     position: fixed;
-    overflow: hidden;
+    overflow: scroll;
     height: 50%;
     bottom: 0;
     background-color: rgb(37, 37, 37);

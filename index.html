@@ -53,11 +53,11 @@
                     <!-- 播放模式 -->
                     <div  class="center-icon mode"><button id="playMode"></button></div>
                     <!-- 上一首 -->
-                    <div id="skipForward" class="center-icon s-right"><button></button></div>
+                    <div id="skipForward" class="center-icon s-right"><button title="快捷键为alt+arrow left"></button></div>
                     <!-- 暂停按钮 -->
                     <div id="playPause" class="center-icon icon-play"><button></button></div>
                     <!-- 下一首 -->
-                    <div id="skipBackward" class="center-icon s-left"><button></button></div>
+                    <div id="skipBackward" class="center-icon s-left"><button title="快捷键为alt+arrow right"></button></div>
                     <!-- 音量调节 -->
                     <div id="volume" class="center-icon volume"><button></button></div>
                     <!-- 音量悬浮窗 -->
@@ -66,7 +66,7 @@
                  <!-- 后部按钮 -->
                 <div class="bottom-button-container">
                     <!-- 列表 -->
-                 <div class="music-list" id="music-list">
+                 <div class="music-list" id="music-list" >
                     <div class="music-list-container">
                         <div class="music-list-title">播放队列</div>
                         <hr class="line">
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                   </div>
-                    <div id="list" class="bottom-icon list"></div>
+                    <div id="list" class="bottom-icon list" onblur="closeListBoard()"></div>
 
                     <!-- 倍速 -->
                     <div id="speed" class="speed">1.0X</div>
@@ -98,8 +98,8 @@
 
  
     <!-- 关闭列表 -->
-    <div class="close-list" id="close-list"></div>
-    <div class="close-list2" id="close-list2"></div>
+    <!-- <div class="close-list" id="close-list"></div> -->
+    
  
     <script src="audio-test.js"></script>
 </body>

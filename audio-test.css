@@ -376,18 +376,8 @@ html,body{
     height: 100%;
     left: 0;
     top: 0;
-    width: 75%;
-    z-index: 2;
-}
-.close-list2 {
-    display: none;
-    position:fixed;
-    height: 20%;
-    right: 0;
-    top: 0;
-    width: 30%;
-    z-index: 2;
-    
+    width: 100%;
+    z-index: 15;
 }
 .music-list {
     right: 0;
@@ -398,7 +388,7 @@ html,body{
     height:370%;
     display: none;
     border-radius: 10px;
-    z-index: 2;
+    z-index: 100;
     box-shadow:0 25px 40px rgba(0, 0, 0, 0.3); 
     
 }
