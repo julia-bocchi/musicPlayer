@@ -605,3 +605,33 @@ function setOffset() {
 // 当audio的播放时间更新时，触发该事件
 doms.audio.addEventListener("timeupdate", setOffset);
 // alert("电脑端保持窗口宽度为1000px以上观感最佳")
+//滚动时滑块出现
+// 获取滚动元素
+const scrollableList = document.getElementById('scrollable-list');
+
+// 设置定时器
+let timeout = null;
+
+// 滚动时显示滚动条
+scrollableList.addEventListener('scroll', () => {
+    // 清除之前的定时器
+    if (timeout) {
+        clearTimeout(timeout);
+    }
+    
+    // 显示滚动条
+    scrollableList.classList.add('show-scrollbar');
+    
+    // 设置定时器，在200ms后隐藏滚动条
+    timeout = setTimeout(() => {
+        scrollableList.classList.remove('show-scrollbar');
+    }, 200);
+});
+
+// 鼠标离开时隐藏滚动条
+scrollableList.addEventListener('mouseleave', () => {
+    if (timeout) {
+        clearTimeout(timeout);
+    }
+    scrollableList.classList.remove('show-scrollbar');
+});
